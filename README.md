@@ -13,20 +13,20 @@ Estas versiones fueron escogidas, dado que las versiones más actuales de pthrea
 
 # Instalar pthreads
 
-1. Instalar las dependencias de paquetes necesarios para realizar la compilación y configuración de los paquetes:
+* Instalar las dependencias de paquetes necesarios para realizar la compilación y configuración de los paquetes:
 ```shell
 ~# sudo apt-get install gcc make libzzip-dev libreadline-dev libxml2-dev \
 libssl-dev libmcrypt-dev libcurl4-openssl-dev libbz2-dev autoconf libcurl4-openssl-dev pkg-config libssl-dev libssl-ocaml-dev
 ```
 
-2. Descargar la versión de PHP correspondiente (en mi caso, la versión 5.5.35) y la descomprimimos en una ubicación en nuestro sistema:
+* Descargar la versión de PHP correspondiente (en mi caso, la versión 5.5.35) y la descomprimimos en una ubicación en nuestro sistema:
 ```shell
 ~# cd /usr/local/src
 ~# wget http://www.php.net/distributions/php-5.5.35.tar.gz
 ~# tar zxvf php-5.5.35.tar.gz
 ```
 
-3. Configuramos y compilamos el paquete descargado, en este paso puede tardarse varios minutos, dependiendo de la carga que tenga el sistema operativo en ese momento y de los recursos con los que cuente (CPU, RAM, etc.)
+* Configuramos y compilamos el paquete descargado, en este paso puede tardarse varios minutos, dependiendo de la carga que tenga el sistema operativo en ese momento y de los recursos con los que cuente (CPU, RAM, etc.)
 ```shell
 ~# cd /usr/local/src/php-5.5.35
 ~# ./configure --prefix=/usr --with-config-file-path=/etc --enable-maintainer-zts --with-openssl --with-openssl-dir=/usr/local/bin --with-curl=/usr/local
@@ -35,12 +35,12 @@ libssl-dev libmcrypt-dev libcurl4-openssl-dev libbz2-dev autoconf libcurl4-opens
 
 -- ( make -j3 && make -j3 install) -- De esta forma puede ser un poco más rápido.
 
-4. Copiamos el nuevo archivo de configuración de PHP (php.ini) a la ubicación correspondiente:
+* Copiamos el nuevo archivo de configuración de PHP (php.ini) a la ubicación correspondiente:
 ```shell
 ~# cp php.ini-development /etc/php.ini
 ```
 
-5. Procedemos a instalar la libreria pthreads, habilitar la extensión en la configuración de PHP (php.ini) y revisamos que ya se pueda instanciar:
+* Procedemos a instalar la libreria pthreads, habilitar la extensión en la configuración de PHP (php.ini) y revisamos que ya se pueda instanciar:
 ```shell
 ~# pecl install pthreads-2.0.10
 ~# echo "extension=pthreads.so" >> /etc/php.ini
